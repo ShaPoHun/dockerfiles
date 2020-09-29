@@ -15,33 +15,33 @@ ENV ETCD_VER=v3.4.3 \
      
 RUN mkdir -p /extra && \
     \
-    wget https://github.com/etcd-io/etcd/releases/download/$ETCD_VER/etcd-$ETCD_VER-linux-amd64.tar.gz && \
-    tar zxf etcd-$ETCD_VER-linux-amd64.tar.gz && \
-    cd etcd-$ETCD_VER-linux-amd64 && \
+    wget https://github.com/etcd-io/etcd/releases/download/$ETCD_VER/etcd-$ETCD_VER-linux-arm64.tar.gz && \
+    tar zxf etcd-$ETCD_VER-linux-arm64.tar.gz && \
+    cd etcd-$ETCD_VER-linux-arm64 && \
     mv etcd etcdctl /extra && \
-    cd / && rm -rf etcd-$ETCD_VER-linux-amd64* && \
+    cd / && rm -rf etcd-$ETCD_VER-linux-arm64* && \
     \
-    wget https://pkg.cfssl.org/R1.2/cfssl_linux-amd64 && \
-    wget https://pkg.cfssl.org/R1.2/cfssljson_linux-amd64 && \
-    wget https://pkg.cfssl.org/R1.2/cfssl-certinfo_linux-amd64 && \
-    mv cfssl_linux-amd64 /extra/cfssl && \
-    mv cfssljson_linux-amd64 /extra/cfssljson && \
-    mv cfssl-certinfo_linux-amd64 /extra/cfssl-certinfo && \
+    wget https://pkg.cfssl.org/R1.2/cfssl_linux-arm64 && \
+    wget https://pkg.cfssl.org/R1.2/cfssljson_linux-arm64 && \
+    wget https://pkg.cfssl.org/R1.2/cfssl-certinfo_linux-arm64 && \
+    mv cfssl_linux-arm64 /extra/cfssl && \
+    mv cfssljson_linux-arm64 /extra/cfssljson && \
+    mv cfssl-certinfo_linux-arm64 /extra/cfssl-certinfo && \
     \
-    wget https://github.com/containernetworking/plugins/releases/download/$CNI_VER/cni-plugins-linux-amd64-$CNI_VER.tgz && \
-    mkdir /cni && tar zxf cni-plugins-linux-amd64-$CNI_VER.tgz -C /cni && \
+    wget https://github.com/containernetworking/plugins/releases/download/$CNI_VER/cni-plugins-linux-arm64-$CNI_VER.tgz && \
+    mkdir /cni && tar zxf cni-plugins-linux-arm64-$CNI_VER.tgz -C /cni && \
     cd /cni && mv bridge flannel host-local loopback portmap tuning /extra && \
     cd / && rm -rf cni* && \
     \
-    wget https://get.helm.sh/helm-$HELM_VER-linux-amd64.tar.gz && \
-    tar zxf helm-$HELM_VER-linux-amd64.tar.gz && \
-    mv linux-amd64/helm /extra && \
-    rm -rf linux-amd64 helm-$HELM_VER-linux-amd64.tar.gz && \
+    wget https://get.helm.sh/helm-$HELM_VER-linux-arm64.tar.gz && \
+    tar zxf helm-$HELM_VER-linux-arm64.tar.gz && \
+    mv linux-arm64/helm /extra && \
+    rm -rf linux-arm64 helm-$HELM_VER-linux-arm64.tar.gz && \
     \
     wget https://github.com/docker/compose/releases/download/$DOCKER_COMPOSE_VER/docker-compose-Linux-x86_64 && \
     mv docker-compose-Linux-x86_64 /extra/docker-compose && \
     \
-    wget https://github.com/projectcalico/calicoctl/releases/download/$CALICOCTL_VER/calicoctl-linux-amd64 && \
-    mv calicoctl-linux-amd64 /extra/calicoctl
+    wget https://github.com/projectcalico/calicoctl/releases/download/$CALICOCTL_VER/calicoctl-linux-arm64 && \
+    mv calicoctl-linux-arm64 /extra/calicoctl
 
 CMD [ "sleep", "360000000" ]
