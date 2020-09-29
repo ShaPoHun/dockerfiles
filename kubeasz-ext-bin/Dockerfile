@@ -12,7 +12,9 @@ ENV ETCD_VER=v3.4.3 \
     DOCKER_COMPOSE_VER=1.23.2 \
     CALICOCTL_VER=v3.8.8 \
     EXT_BIN_VER=0.5.2
-     
+
+COPY cfssl_1.4.1_linux_arm64.tar.gz .
+
 RUN mkdir -p /extra && \
     \
     wget https://github.com/etcd-io/etcd/releases/download/$ETCD_VER/etcd-$ETCD_VER-linux-arm64.tar.gz && \
@@ -21,12 +23,7 @@ RUN mkdir -p /extra && \
     mv etcd etcdctl /extra && \
     cd / && rm -rf etcd-$ETCD_VER-linux-arm64* && \
     \
-    wget https://pkg.cfssl.org/R1.2/cfssl_linux-arm64 && \
-    wget https://pkg.cfssl.org/R1.2/cfssljson_linux-arm64 && \
-    wget https://pkg.cfssl.org/R1.2/cfssl-certinfo_linux-arm64 && \
-    mv cfssl_linux-arm64 /extra/cfssl && \
-    mv cfssljson_linux-arm64 /extra/cfssljson && \
-    mv cfssl-certinfo_linux-arm64 /extra/cfssl-certinfo && \
+    tar zxvf cfssl_1.4.1_linux_arm64.tar.gz  --strip-components 1  -C /extra && \
     \
     wget https://github.com/containernetworking/plugins/releases/download/$CNI_VER/cni-plugins-linux-arm64-$CNI_VER.tgz && \
     mkdir /cni && tar zxf cni-plugins-linux-arm64-$CNI_VER.tgz -C /cni && \
@@ -37,9 +34,6 @@ RUN mkdir -p /extra && \
     tar zxf helm-$HELM_VER-linux-arm64.tar.gz && \
     mv linux-arm64/helm /extra && \
     rm -rf linux-arm64 helm-$HELM_VER-linux-arm64.tar.gz && \
-    \
-    wget https://github.com/docker/compose/releases/download/$DOCKER_COMPOSE_VER/docker-compose-Linux-x86_64 && \
-    mv docker-compose-Linux-x86_64 /extra/docker-compose && \
     \
     wget https://github.com/projectcalico/calicoctl/releases/download/$CALICOCTL_VER/calicoctl-linux-arm64 && \
     mv calicoctl-linux-arm64 /extra/calicoctl
