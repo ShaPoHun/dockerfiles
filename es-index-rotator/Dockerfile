@@ -1,7 +1,7 @@
 # Dockerfile for Rotating the indices in elastic of the EFK deployment
 #
 # @author:  gjmzj
-# @repo:    https://github.com/kubeasz/mirrorepo/es-index-rotator
+# @repo:    https://github.com/ShaPoHun/dockerfiles/tree/master/es-index-rotator
 # @ref:     https://github.com/easzlab/kubeasz/tree/master/manifests/efk/es-index-rotator/rotator.yaml 
 
 FROM alpine:3.9

@@ -4,7 +4,7 @@
 #
 # @author:  gjmzj
 # @usage:   ./rotator.sh <max_days_of_log> [<index_prefix1> ...] 
-# @repo:    https://github.com/kubeasz/mirrorepo/es-index-rotator
+# @repo:    https://github.com/ShaPoHun/dockerfiles/tree/master/es-index-rotator
 # @ref:     https://github.com/easzlab/kubeasz/tree/master/manifests/efk/es-index-rotator/rotator.yaml
 
 set -o nounset
